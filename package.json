@@ -1,14 +1,14 @@
 {
-  "name": "react-hot-boilerplate",
-  "version": "1.0.0",
-  "description": "Boilerplate for ReactJS project with hot code reloading",
+  "name": "draftroom-ui",
+  "version": "0.0.1",
+  "description": "FFBL draftroom in react redux",
   "scripts": {
     "start": "node server.js",
-    "lint": "eslint src"
+    "lint": "./node_modules/.bin/eslint src"
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/gaearon/react-hot-boilerplate.git"
+    "url": "https://github.com/steare573/draftroom-ui"
   },
   "keywords": [
     "react",
@@ -21,12 +21,8 @@
     "edit",
     "webpack"
   ],
-  "author": "Dan Abramov <dan.abramov@me.com> (http://github.com/gaearon)",
+  "author": "Sean Teare <steare573@gmail.com> (http://github.com/steare573)",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/gaearon/react-hot-boilerplate/issues"
-  },
-  "homepage": "https://github.com/gaearon/react-hot-boilerplate",
   "devDependencies": {
     "babel-core": "^6.0.20",
     "babel-loader": "^6.0.1",
