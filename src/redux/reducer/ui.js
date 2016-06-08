@@ -14,6 +14,7 @@ const initialState = {
   roster: {
     filter: 0,
   },
+  connected: false,
 };
 
 export default createReducer(initialState, {
@@ -28,4 +29,6 @@ export default createReducer(initialState, {
     newState.roster.filter = action.userId;
     return newState;
   },
+  UI_CLIENT_CONNECTED: (state) =>
+    Object.assign({}, state, { connected: true }),
 });

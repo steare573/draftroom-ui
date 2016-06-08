@@ -7,11 +7,12 @@
  * @since 2016-06-08
  */
 
-import { createStore } from 'redux';
+import { createStore, applyMiddleware } from 'redux';
 import reducer from './reducer';
+import socketMw from './middleware/socket';
 
 function configureStore(initialState) {
-  const store = createStore(reducer, initialState,
+  const store = createStore(reducer, initialState, applyMiddleware(socketMw),
     window.devToolsExtension && window.devToolsExtension()
   );
   return store;

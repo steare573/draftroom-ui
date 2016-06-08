@@ -45,6 +45,7 @@
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
+    "lodash.isobject": "^3.0.2",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",

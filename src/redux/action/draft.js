@@ -16,8 +16,22 @@ export const clearDraft = () => ({ type: 'CLEAR_DRAFT' });
 export const chatSendMessage = (userId, message) => (
   {
     type: 'CHAT_SEND_MESSAGE',
-    userId,
-    message,
+    toServer: {
+      transport: 'socket',
+      data: {
+        userId,
+        message,
+      },
+      event: 'chat.sendmessage',
+      callback: (dataArray, dispatch) => {
+        dispatch({
+          type: 'CHAT_APPEND_MESSAGE',
+          userId,
+          message,
+        });
+      },
+    },
+
   }
 );
 

@@ -30,7 +30,7 @@ const initialState = {
 const draftReducers = createReducer(initialState, {
   RESET_DRAFT: () => initialState,
   CLEAR_DRAFT: () => ({}),
-  CHAT_SEND_MESSAGE: (state, action) => {
+  CHAT_APPEND_MESSAGE: (state, action) => {
     const newState = Object.assign({}, state);
     newState.chat = Array.from(state.chat);
     newState.chat.push({ message: action.message, sender: action.userId });
