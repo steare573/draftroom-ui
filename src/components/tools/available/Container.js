@@ -10,8 +10,8 @@ import React from 'react';
 import AvailableTemplate from './Template';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { queuePlayer } from '../../../redux/action/user';
-import { draftPlayer } from '../../../redux/action/draft';
+import { draftPlayer, queuePlayer } from '../../../redux/action/draft';
+import { getTeamByUserId } from '../../../util';
 
 function AvailableContainer(props) {
   const availablePlayers = props.players.filter((playerObj) => {
@@ -20,7 +20,7 @@ function AvailableContainer(props) {
     );
     return drafted === undefined;
   });
-
+  const userTeam = getTeamByUserId(props.teams, props.user.id);
   return (<AvailableTemplate
     {...props}
     draftPlayer={
@@ -29,12 +29,13 @@ function AvailableContainer(props) {
           props.draftedPlayers.length % props.teams.length
         ];
 
-        if (curDrafter && parseInt(curDrafter.userId, 10) === parseInt(props.user.id, 10)) {
+        if (curDrafter && parseInt(curDrafter.id, 10) === parseInt(userTeam.id, 10)) {
           props.draftPlayer(curDrafter.id, playerId);
         }
       }
     }
     availablePlayers={availablePlayers}
+    userTeam={userTeam}
   />);
 }
 

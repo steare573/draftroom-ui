@@ -10,45 +10,38 @@ import RostersTemplate from './Template';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { setRosterFilter } from '../../../redux/action/ui';
-import { getTeamByUserId } from '../../../util';
 
-class RostersContainer extends React.Component {
-  componentDidMount() {
-    if (!this.props.rosterFilter) {
-      this.props.setRosterFilter(getTeamByUserId(this.props.teams, this.props.user.id).id);
+function RostersContainer(props) {
+  const curRosters = {};
+  props.draftedPlayers.forEach(player => {
+    if (Object.keys(curRosters).indexOf(player.teamId.toString()) === -1) {
+      curRosters[player.teamId] = [
+        props.players.find(
+          playerRecord => parseInt(playerRecord.id, 10) === parseInt(player.playerId, 10)
+        ),
+      ];
+    } else {
+      curRosters[player.teamId].push(
+        props.players.find(
+          playerRecord => parseInt(playerRecord.id, 10) === parseInt(player.playerId, 10)
+        )
+      );
     }
-  }
-  render() {
-    const curRosters = {};
-    this.props.draftedPlayers.forEach(player => {
-      if (Object.keys(curRosters).indexOf(player.userId) === -1) {
-        curRosters[player.userId] = [
-          this.props.players.find(
-            playerRecord => parseInt(playerRecord.id, 10) === parseInt(player.playerId, 10)
-          ),
-        ];
-      } else {
-        curRosters[player.userId].push(
-          this.props.players.find(
-            playerRecord => parseInt(playerRecord.id, 10) === parseInt(player.playerId, 10)
-          )
-        );
-      }
-    });
+  });
 
-    return (
-      <RostersTemplate
-        rosterFilter={this.props.rosterFilter}
-        rosters={curRosters}
-        teams={this.props.teams}
-        changeActiveRoster={userId => { this.props.setRosterFilter(userId); }}
-      />
-    );
-  }
+  return (
+    <RostersTemplate
+      rosterFilter={props.rosterFilter}
+      rosters={curRosters}
+      teams={props.teams}
+      changeActiveRoster={userId => { props.setRosterFilter(userId); }}
+    />
+  );
 }
 
+
 RostersContainer.propTypes = {
-  rosterFilter: React.PropTypes.number,
+  rosterFilter: React.PropTypes.string,
   teams: React.PropTypes.arrayOf(React.PropTypes.shape({
     id: React.PropTypes.number,
     name: React.PropTypes.string,

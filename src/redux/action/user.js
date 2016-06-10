@@ -5,16 +5,15 @@
  * @since 2016-06-08
  */
 
-export const queuePlayer = playerId => (
+export const getUser = userId => (
   {
-    type: 'QUEUE_PLAYER',
-    playerId,
-  }
-);
-
-export const unqueuePlayer = playerId => (
-  {
-    type: 'UNQUEUE_PLAYER',
-    playerId,
+    type: 'GET_USER',
+    toServer: {
+      transport: 'socket',
+      data: {
+        userId,
+      },
+      event: 'user.getbyid',
+    },
   }
 );

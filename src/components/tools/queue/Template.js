@@ -14,11 +14,11 @@ function QueueTemplate(props) {
         Queued Players
       </div>
       {props.queuedPlayers.map(playerObj => (
-        <div>
+        <div key={`queue-player-${playerObj.id}-${playerObj.firstName}`}>
           {playerObj.firstName}
           {playerObj.lastName}
           {playerObj.position}
-          <span onClick={() => props.unqueuePlayer(playerObj.id)}>U</span>
+          <span onClick={() => props.unqueuePlayer(playerObj.id, props.userTeam.id)}>U</span>
         </div>
       ))}
     </div>
@@ -33,6 +33,11 @@ QueueTemplate.propTypes = {
     position: React.PropTypes.oneOf(['QB', 'WR', 'RB', 'TE', 'K', 'DST']),
   })),
   unqueuePlayer: React.PropTypes.func,
+  userTeam: React.PropTypes.shape({
+    id: React.PropTypes.number,
+    name: React.PropTypes.string,
+    queue: React.PropTypes.arrayOf(React.PropTypes.number),
+  }),
 };
 
 export default QueueTemplate;

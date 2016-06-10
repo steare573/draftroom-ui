@@ -8,26 +8,12 @@
 import createReducer from '../util/createReducer';
 
 const initialState = {
-  firstName: 'Sean',
-  lastName: 'Teare',
-  id: 2,
-  queue: [],
+  firstName: '',
+  lastName: '',
+  id: 0,
 };
 
 export default createReducer(initialState, {
   CLEAR_USER: () => ({}),
-  QUEUE_PLAYER: (state, action) => {
-    const newState = Object.assign({}, state);
-    newState.queue = Array.from(state.queue);
-    if (newState.queue.indexOf(action.playerId) === -1) {
-      newState.queue.push(action.playerId);
-    }
-    return newState;
-  },
-  UNQUEUE_PLAYER: (state, action) =>
-    Object.assign({}, state, {
-      queue: Array.from(state.queue.filter(
-        playerId => parseInt(playerId, 10) !== parseInt(action.playerId, 10)
-      )),
-    }),
+  SET_USER: (state, action) => Object.assign({}, state, action.user),
 });

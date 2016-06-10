@@ -19,7 +19,7 @@ function AvailableTemplate(props) {
             <span onClick={() => { props.draftPlayer(player.id); }}>
               {player.firstName} {player.lastName} {player.position}
             </span>
-            <span onClick={() => { props.queuePlayer(player.id); }}>Q</span>
+            <span onClick={() => { props.queuePlayer(player.id, props.userTeam.id); }}>Q</span>
           </div>
         ))
       }
@@ -47,6 +47,11 @@ AvailableTemplate.propTypes = {
   user: React.PropTypes.shape({
     id: React.PropTypes.number,
     name: React.PropTypes.string,
+  }),
+  userTeam: React.PropTypes.shape({
+    id: React.PropTypes.number,
+    name: React.PropTypes.string,
+    queue: React.PropTypes.arrayOf(React.PropTypes.number),
   }),
 };
 

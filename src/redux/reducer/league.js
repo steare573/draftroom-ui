@@ -8,21 +8,22 @@
 import createReducer from '../util/createReducer';
 
 const initialState = {
-  name: 'My league',
-  teams: [
-    {
-      id: 3,
-      userId: 2,
-      name: 'Team 1',
-    },
-    {
-      id: 4,
-      userId: 4,
-      name: 'Team 2',
-    },
-  ],
+  id: 0,
+  name: 'Loading League',
+  teams: [],
 };
 
 export default createReducer(initialState, {
   RESET_LEAGUE: () => ({}),
+  SET_LEAGUE: (state, action) => Object.assign({}, state, action.league),
+  SET_QUEUE_LIST: (state, action) =>
+    Object.assign({}, state, {
+      teams: state.teams.map(curTeam => {
+        if (curTeam.id === action.teamId) {
+          return Object.assign({}, curTeam, { queue: action.queue });
+        }
+        return curTeam;
+      }) }
+    ),
+
 });

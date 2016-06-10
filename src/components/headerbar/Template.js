@@ -9,13 +9,14 @@ import React from 'react';
 
 function HeaderBarTemplate(props) {
   const user = props.user || {};
+  const curDrafter = props.curDrafter || {};
   return (
     <div className="header-container">
       <div className="league-info">
         {props.league.name}
       </div>
       <div className="draft-info">
-        Currently Drafting {props.curDrafter.name}
+        Currently Drafting {curDrafter.name}
       </div>
       <div className="user-info">
         {user.firstName} {user.lastName}

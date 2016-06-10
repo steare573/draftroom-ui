@@ -12,7 +12,7 @@ const initialState = {
     pendingMessage: '',
   },
   roster: {
-    filter: 0,
+    filter: '0',
   },
   connected: false,
 };

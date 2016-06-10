@@ -9,11 +9,15 @@ import React from 'react';
 import QueueTemplate from './Template';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
-import { unqueuePlayer } from '../../../redux/action/user';
+import { unqueuePlayer } from '../../../redux/action/draft';
+import { getTeamByUserId } from '../../../util';
 
 class QueueContainer extends React.Component {
   render() {
-    const queuedPlayerList = this.props.user.queue.map(playerId =>
+    const userTeam = getTeamByUserId(this.props.teams, this.props.user.id) || {};
+
+    const userQueue = userTeam.queue || [];
+    const queuedPlayerList = userQueue.map(playerId =>
       this.props.players.find(player => parseInt(player.id, 10) === parseInt(playerId, 10))
     );
 
@@ -29,6 +33,7 @@ class QueueContainer extends React.Component {
       <QueueTemplate
         queuedPlayers={availableQueuedPlayers}
         unqueuePlayer={this.props.unqueuePlayer}
+        userTeam={userTeam}
       />
     );
   }
@@ -52,6 +57,11 @@ QueueContainer.propTypes = {
     queue: React.PropTypes.arrayOf(React.PropTypes.number),
   }),
   unqueuePlayer: React.PropTypes.func,
+  teams: React.PropTypes.arrayOf(React.PropTypes.shape({
+    id: React.PropTypes.number,
+    name: React.PropTypes.string,
+    queue: React.PropTypes.arrayOf(React.PropTypes.number),
+  })),
 };
 
 export default connect(
@@ -59,6 +69,7 @@ export default connect(
     user: state.user,
     players: state.players,
     draftedPlayers: state.draft.draftedPlayers,
+    teams: state.league.teams,
   }),
   dispatch => bindActionCreators({ unqueuePlayer }, dispatch)
 )(QueueContainer);

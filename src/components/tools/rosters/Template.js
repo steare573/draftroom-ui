@@ -15,6 +15,7 @@ function RostersTemplate(props) {
       </div>
       <div className="roster-filter">
         <select onChange={(e) => { props.changeActiveRoster(e.target.value); }}>
+          <option value="0">None</option>
           {
             props.teams.map(curTeam =>
               <option
@@ -31,7 +32,9 @@ function RostersTemplate(props) {
         {
           props.rosters[props.rosterFilter] ?
             props.rosters[props.rosterFilter].map(curPlayer => (
-              <div>{curPlayer.firstName} {curPlayer.lastName} {curPlayer.position}</div>
+              <div key={`roster-player-${curPlayer.id}`}>
+                {curPlayer.firstName} {curPlayer.lastName} {curPlayer.position}
+              </div>
             ))
             : <div>No players rostered</div>
         }
@@ -46,7 +49,7 @@ RostersTemplate.propTypes = {
     id: React.PropTypes.number,
     name: React.PropTypes.string,
   })),
-  rosterFilter: React.PropTypes.number,
+  rosterFilter: React.PropTypes.string,
   rosters: React.PropTypes.object,
   // need to specify what rosters really contains
 };
