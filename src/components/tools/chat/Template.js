@@ -11,9 +11,7 @@ import { getTeamById } from '../../../util';
 function ChatTemplate(props) {
   return (
     <div className="tool tool-chat">
-      <div className="tool-title">
-        Chat
-      </div>
+      <div className="vertical-spacer" />
       <div className="tool-body">
         <div className="messages">
           {
@@ -26,13 +24,13 @@ function ChatTemplate(props) {
           }
         </div>
         <div className="controls">
-          <div>
+          <div className="message-input">
             <textarea
               onChange={(e) => { props.updatePendingMessage(e.target.value); }}
               value={props.pendingMessage}
             />
           </div>
-          <div>
+          <div className="message-buttons">
             <button
               className="send-message"
               onClick={() => { props.sendMessage(props.pendingMessage); }}

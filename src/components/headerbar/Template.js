@@ -13,12 +13,32 @@ function HeaderBarTemplate(props) {
   return (
     <div className="header-container">
       <div className="league-info">
-        {props.league.name}
+        <img className="site-logo" alt="logo" src="/static/images/ffbl-logo.png" />
+        <div className="site-info">
+          <div>Draftroom</div>
+          <div>{props.league.name}</div>
+        </div>
       </div>
       <div className="draft-info">
-        Currently Drafting {curDrafter.name}
+        <div className="box-container">
+          Current Pick{curDrafter.name}
+        </div>
+        <div className="box-container">
+          Previous Pick
+        </div>
+        <div className="box-container">
+          On Deck
+        </div>
+        <div className="box-container-half">
+          Timer
+        </div>
+        <div className="box-container-half">
+          Picks Remaining
+        </div>
+
       </div>
       <div className="user-info">
+        <img src="/static/images/guest.png" alt="guest icon" />
         {user.firstName} {user.lastName}
       </div>
     </div>

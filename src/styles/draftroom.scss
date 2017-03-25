@@ -1,0 +1,337 @@
+$primary-background-color: black;
+$primary-font-color: white;
+$secondary-background-color: white;
+$secondary-font-color: black;
+$tertiary-color: darkgrey;
+$default-font-family: Arial, Helvetica, sans-serif;
+$tertiary-background-color: darkgrey;
+$tertiary-font-color: black;
+html, body, #app-container {
+  height: 100%;
+  width: 100%;
+  padding: 0;
+  margin: 0;
+  font-family: $default-font-family;
+  overflow: hidden;
+
+}
+
+.app-container {
+  margin:0;
+  padding:0;
+  height:100%;
+  width:100%;
+  border: 1px solid $primary-background-color;
+}
+
+.header-container {
+  width: 100%;
+  height: 50px;
+  margin: 0;
+  background-color: $primary-background-color;
+  color: $primary-font-color;
+
+  .site-logo, .site-info {
+    height: 50px;
+    width: 50px;
+    float: left;
+    font-size: .8em;
+  }
+  .user-info, .league-info, .draft-info {
+    float: left;
+    width: 20%;
+    height: 100%;
+    padding: 0;
+    margin:0;
+  }
+
+
+  .box-container-half {
+    background-color: $tertiary-color;
+    color: $secondary-font-color;
+    height: 80%;
+    margin-top: .1em;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 100px;
+    border-radius: 10px;
+    float: left;
+  }
+  .draft-info {
+    width: 70%;
+  }
+  .user-info {
+    width: 10%;
+    img {
+      width: 50px;
+      height: 50px;
+      float: left;
+    }
+  }
+}
+
+.footer-container {
+  padding: 0;
+  margin: 0;
+  height: 50px;
+  width: 100%;
+  background-color: $primary-background-color;
+  color: $primary-font-color;
+
+  .current-pick-status {
+    float: left;
+    width: 25%;
+    height: 100%;
+
+   .box-container {
+     margin: 0;
+     border-top-left-radius: 0;
+     border-bottom-left-radius: 0;
+     padding: 0;
+     height: 100%;
+
+   }
+
+
+  }
+
+  .player-scroll {
+    float: left;
+    width: 75%;
+    height: 100%;
+    vertical-align: middle;
+    font-size: 1.5em;
+    line-height: 50px;
+  }
+
+}
+
+  .box-container {
+    background-color: $tertiary-color;
+    color: $secondary-font-color;
+    height: 80%;
+    margin-top: .1em;
+    margin-left: 10px;
+    margin-right: 10px;
+    width: 200px;
+    border-radius: 10px;
+    float: left;
+  }
+
+.content-container {
+  width: 100%;
+  height: calc(100% - 100px);
+  margin: 0;
+}
+
+.middle-container, .bottom-container {
+  width:100%;
+  height: 50%;
+  padding:0;
+  margin:0;
+}
+
+.tool-board {
+  height: 100%;
+  width:100%;
+  border-right: $primary-background-color;
+  table {
+    border-collapse: separate;
+    cellspacing: 5px;
+    height:100%;
+  }
+
+  td {
+    border: 1px solid darkslategray;
+    height: 75px;
+    width: 75px;
+    border-radius: 5px;
+    font-size: .7em;
+  }
+
+  tr {
+    padding: 0;
+    margin: 0;
+  }
+
+  .pagination-controls  {
+    text-align: center;
+    line-height:20px;
+    height: 20px;
+  }
+  .tool-body {
+    overflow: scroll;
+  }
+}
+
+.tool-board .wr {
+  background-color: lightgreen;
+}
+
+.tool-board .rb {
+  background-color: lightyellow;
+}
+
+.tool-board .qb {
+  background-color: lightpink
+}
+.tool-chat {
+  height: 100%;
+  width: 100%;
+  border-right: 1px solid darkblue;
+  font-size: .7em;
+  .vertical-spacer {
+    text-align: center;
+    line-height:20px;
+    height: 20px;
+  }
+}
+
+.tool-chat .messages {
+  height: 70%;
+  border-radius: 5px;
+  border: 1px solid $primary-background-color;
+  margin-right: 1em;
+  margin-left:1em;
+  padding: .2em;
+
+}
+
+.tool-chat .controls {
+  height: 30%;
+  width: 100%;
+  margin-right: 1em;
+  margin-left: 1em;
+  margin-top: 3px;
+  padding: 0;
+  .message-input {
+    width: 75%;
+    height: 100%;
+    float: left;
+  }
+
+  .message-buttons {
+    width: 15%;
+    height: 100%;
+    float: left;
+
+    button {
+      margin:.2em;
+      width: 100%;
+      height: 40%;
+      background-color: $primary-background-color;
+      color: $primary-font-color;
+      border:none;
+      border-radius: 5px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.tool-title {
+  background-color: $primary-background-color;
+  color:$primary-font-color;
+  margin:0;
+  height:1.2em;
+}
+.tool-chat textarea {
+  height: 85%;
+  width: 95%;
+  border-radius: 5px;
+  padding: .2em;
+}
+.tool-available {
+  height: 100%;
+  width: 100%;
+}
+
+.tool-queue {
+  height: 100%;
+  width: 100%;
+}
+
+.column-left {
+  margin: 0;
+  padding: 0;
+  float: left;
+  height:100%;
+  width: 70%;
+}
+
+.column-right {
+  margin: 0;
+  padding: 0;
+  float: left;
+  height:100%;
+  width: 30%;
+}
+.tool-body {
+
+  height: 245px;
+}
+
+.search-bar {
+    width: 95%;
+    box-sizing: border-box;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 12px;
+    background-color: white;
+    background-image: url(/static/images/searchicon.png);
+    background-position: 2px;
+    background-repeat: no-repeat;
+    padding: 5px 5px 5px 30px;
+    margin: 5px;
+}
+
+.tab-nav {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  border-top: solid 1px $secondary-background-color;
+  width: 100%;
+  li {
+    display: inline-block;
+    width: 13.8%;
+    border: solid 1px $primary-background-color;
+    background-color: $tertiary-background-color;
+    color: $tertiary-font-color;
+
+    a, span {
+      padding: 0 10px;
+      &:hover {
+        cursor: pointer;
+      }
+    }
+  }
+
+}
+
+.tab-body {
+  border: solid 1px $primary-background-color;
+  height: 100%;
+  font-size: .8em;
+}
+.column-third {
+  float: left;
+  width: 33.3333333%;
+  height: 100%;
+}
+
+.tool-rosters {
+  height: 100%;
+  width: 100%;
+  .tab-nav {
+    li {
+      width: 32.8%;
+
+      select {
+        height: .8em;
+        width: 80%;
+      }
+    }
+  }
+
+}

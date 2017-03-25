@@ -7,37 +7,46 @@
 
 import React from 'react';
 
+
 function RostersTemplate(props) {
   return (
     <div className="tool tool-rosters">
       <div className="tool-title">
         Rosters
       </div>
-      <div className="roster-filter">
-        <select onChange={(e) => { props.changeActiveRoster(e.target.value); }}>
-          <option value="0">None</option>
+      <ul className="tab-nav">
+        <li><span className="roster-filter">
+          <select onChange={(e) => { props.changeActiveRoster(e.target.value); }}>
+            <option value="0">None</option>
+            {
+              props.teams.map(curTeam =>
+                <option
+                  key={`roster-filter-team-${curTeam.id}`}
+                  value={curTeam.id}
+                >
+                  {curTeam.name}
+                </option>
+              )
+            }
+          </select>
+        </span></li>
+        <li><span>By Position</span></li>
+        <li><span>By Draft Order</span></li>
+      </ul>
+      <div className="tab-body">
+        <input type="text" className="search-bar" placeholder="...Search" />
+
+        <div className="roster-display">
           {
-            props.teams.map(curTeam =>
-              <option
-                key={`roster-filter-team-${curTeam.id}`}
-                value={curTeam.id}
-              >
-                {curTeam.name}
-              </option>
-            )
+            props.rosters[props.rosterFilter] ?
+              props.rosters[props.rosterFilter].map(curPlayer => (
+                <div key={`roster-player-${curPlayer.id}`}>
+                  {curPlayer.firstName} {curPlayer.lastName} {curPlayer.position}
+                </div>
+              ))
+              : <div>No players rostered</div>
           }
-        </select>
-      </div>
-      <div className="roster-display">
-        {
-          props.rosters[props.rosterFilter] ?
-            props.rosters[props.rosterFilter].map(curPlayer => (
-              <div key={`roster-player-${curPlayer.id}`}>
-                {curPlayer.firstName} {curPlayer.lastName} {curPlayer.position}
-              </div>
-            ))
-            : <div>No players rostered</div>
-        }
+        </div>
       </div>
     </div>
   );

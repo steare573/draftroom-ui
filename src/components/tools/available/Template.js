@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import TabNavigation from '../../common/tab-navigation/Container';
 
 function AvailableTemplate(props) {
   return (
@@ -13,16 +14,20 @@ function AvailableTemplate(props) {
       <div className="tool-title">
         Available Players
       </div>
-      {
-        props.availablePlayers.map((player) => (
-          <div key={`available-player-${player.id}`}>
-            <span onClick={() => { props.draftPlayer(player.id); }}>
-              {player.firstName} {player.lastName} {player.position}
-            </span>
-            <span onClick={() => { props.queuePlayer(player.id, props.userTeam.id); }}>Q</span>
-          </div>
-        ))
-      }
+      <TabNavigation />
+      <div className="tab-body">
+        <input type="text" className="search-bar" placeholder="...Search" />
+        {
+          props.availablePlayers.map((player) => (
+            <div key={`available-player-${player.id}`}>
+              <span onClick={() => { props.draftPlayer(player.id); }}>
+                {player.firstName} {player.lastName} {player.position}
+              </span>
+              <span onClick={() => { props.queuePlayer(player.id, props.userTeam.id); }}>Q</span>
+            </div>
+          ))
+        }
+      </div>
     </div>
   );
 }

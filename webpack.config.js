@@ -1,5 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
+const ExtractTextPlugin = require('extract-text-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 module.exports = {
   devtool: 'eval',
@@ -15,12 +17,25 @@ module.exports = {
   },
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
+    new CopyWebpackPlugin([
+      { from: 'static' },
+    ]),
+    new ExtractTextPlugin({
+      filename: 'draftroom.css',
+      allChunks: true,
+    }),
   ],
   module: {
     loaders: [{
       test: /\.js$/,
-      loaders: ['react-hot', 'babel'],
+      loaders: ['react-hot-loader', 'babel-loader'],
       include: path.join(__dirname, 'src'),
+    }, {
+      test: /\.scss$/,
+      loader: ExtractTextPlugin.extract({
+        fallback: 'style-loader',
+        use: 'css-loader!sass-loader',
+      }),
     }],
   },
 };

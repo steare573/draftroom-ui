@@ -8,6 +8,7 @@
 import React from 'react';
 import HeaderBar from './headerbar/Container';
 import Content from './content/Container';
+import FooterBar from './footerbar/Container';
 import { Provider } from 'react-redux';
 import store from '../redux/store';
 import SocketInitializer from './SocketInitializer';
@@ -19,6 +20,7 @@ export default function Main() {
         <SocketInitializer />
         <HeaderBar />
         <Content />
+        <FooterBar />
       </div>
     </Provider>
   );

@@ -4,7 +4,8 @@
   "description": "FFBL draftroom in react redux",
   "scripts": {
     "start": "node server.js",
-    "lint": "./node_modules/.bin/eslint src"
+    "lint": "./node_modules/.bin/eslint src",
+    "build": "./node_modules/.bin/webpack"
   },
   "repository": {
     "type": "git",
@@ -29,19 +30,24 @@
     "babel-preset-es2015": "^6.9.0",
     "babel-preset-react": "^6.0.15",
     "babel-preset-stage-0": "^6.0.15",
+    "copy-webpack-plugin": "^4.0.1",
+    "css-loader": "^0.27.3",
     "eslint": "^2.11.1",
     "eslint-config-airbnb": "^9.0.1",
     "eslint-plugin-import": "^1.8.1",
     "eslint-plugin-jsx-a11y": "^1.3.0",
     "eslint-plugin-react": "^5.1.1",
+    "extract-text-webpack-plugin": "^2.1.0",
     "node-sass": "^3.7.0",
     "react-hot-loader": "^1.3.0",
-    "sass-loader": "^3.2.0",
-    "webpack": "^1.12.2",
+    "sass-loader": "^3.2.3",
+    "style-loader": "^0.14.1",
+    "webpack": "^2.2.1",
     "webpack-dev-server": "^1.12.1"
   },
   "dependencies": {
     "lodash.isobject": "^3.0.2",
+    "query-string": "^4.3.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
     "react-redux": "^4.4.5",

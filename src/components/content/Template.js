@@ -15,14 +15,24 @@ import Rosters from '../tools/rosters/Container';
 export default function ContentTemplate() {
   return (
     <div className="content-container">
-      <div className="column-left">
-        <Board />
-        <Chat />
+      <div className="middle-container">
+        <div className="column-left">
+          <Board />
+        </div>
+        <div className="column-right">
+          <Chat />
+        </div>
       </div>
-      <div className="column-right">
-        <Available />
-        <Queue />
-        <Rosters />
+      <div className="bottom-container">
+        <div className="column-third">
+          <Available />
+        </div>
+        <div className="column-third">
+          <Queue />
+        </div>
+        <div className="column-third">
+          <Rosters />
+        </div>
       </div>
     </div>
   );

@@ -6,6 +6,7 @@
  */
 
 import React from 'react';
+import TabNavigation from '../../common/tab-navigation/Container';
 
 function QueueTemplate(props) {
   return (
@@ -13,14 +14,18 @@ function QueueTemplate(props) {
       <div className="tool-title">
         Queued Players
       </div>
-      {props.queuedPlayers.map(playerObj => (
-        <div key={`queue-player-${playerObj.id}-${playerObj.firstName}`}>
-          {playerObj.firstName}
-          {playerObj.lastName}
-          {playerObj.position}
-          <span onClick={() => props.unqueuePlayer(playerObj.id, props.userTeam.id)}>U</span>
-        </div>
-      ))}
+      <TabNavigation />
+      <div className="tab-body">
+        <input type="text" className="search-bar" placeholder="...Search" />
+        {props.queuedPlayers.map(playerObj => (
+          <div key={`queue-player-${playerObj.id}-${playerObj.firstName}`}>
+            {playerObj.firstName}
+            {playerObj.lastName}
+            {playerObj.position}
+            <span onClick={() => props.unqueuePlayer(playerObj.id, props.userTeam.id)}>U</span>
+          </div>
+        ))}
+      </div>
     </div>
   );
 }

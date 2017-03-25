@@ -39,8 +39,8 @@ function BoardTemplate(props) {
   }
   return (
     <div className="tool tool-board">
-      <div className="tool-title">
-        Draft Board
+      <div className="pagination-controls">
+        {(() => '< 1 2 3 4 5 6 7 8 9 10 11 12 13 14 15 16 17 18 19 >')()}
       </div>
       <div className="tool-body">
         <table>

@@ -10,7 +10,7 @@ import BoardTemplate from './Template';
 import { connect } from 'react-redux';
 
 function BoardContainer(props) {
-  return <BoardTemplate { ...props } />;
+  return <BoardTemplate {...props} />;
 }
 
 BoardContainer.propTypes = {

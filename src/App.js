@@ -7,5 +7,6 @@
 import React from 'react';
 import Main from './components/Main';
 import ReactDom from 'react-dom';
+import './styles/draftroom.scss';
 
 ReactDom.render(<Main />, document.getElementById('app-container'));
